@@ -30,7 +30,7 @@ const InputField = React.forwardRef(function InputField(
         placeholder={placeholder}
         className={cn(
           dark && "bg-base-300 text-base-200 placeholder:text-base-200",
-          !dark && "bg-base-100 text-base-100 placeholder:text-white"
+          !dark && "bg-base-100 text-base-200 placeholder:text-base-200"
         )}
         {...props}
       />
