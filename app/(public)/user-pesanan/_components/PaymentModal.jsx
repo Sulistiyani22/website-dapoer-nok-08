@@ -40,14 +40,14 @@ function PaymentModal({ name, table, takeaway }) {
 
   const ListCard = ({ product }) => {
     return (
-      <div className="bg-base-200 min-h-14 sm:min-h-20 sm:h-auto flex gap-1">
+      <div className="bg-base-200 min-h-14 sm:min-h-20 sm:h-auto flex gap-1 rounded-2xl">
         <div className="basis-2/3 flex gap-2 p-2">
           <Image
             src={product.image}
             height={100}
             width={100}
             alt={product.name}
-            className="w-auto h-14 sm:h-auto"
+            className="w-auto h-14 sm:h-auto rounded-2xl"
           />
           <div className="flex flex-col gap-1">
             <span className="text-sm sm:text-lg font-medium">
