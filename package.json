@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node --trace-warnings data/seed.js",
-    "postinstall": "prisma generate && prisma migrate deploy"
+    "seed": "node --trace-warnings data/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.11.0",
