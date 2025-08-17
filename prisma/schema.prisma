@@ -37,7 +37,7 @@ model Menu {
 model Order {
   id            Int         @id @default(autoincrement())
   customer_name String
-  table_number  Int
+  table_number  Int?
   has_payed     Boolean
   takeaway      Boolean
   status        String

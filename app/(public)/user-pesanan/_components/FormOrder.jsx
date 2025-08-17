@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import InputField from "@/components/general/InputField";
 import SelectField from "@/components/general/SelectField";
 import SwitchField from "@/components/general/SwitchField";
@@ -15,13 +15,24 @@ function FormOrder() {
 
   const usedTableNumbers = useMemo(() => {
     return orders
-      .filter((order) => order.table_number && !order.takeaway)
+      .filter(
+        (order) =>
+          order.table_number && !order.takeaway && order.status != "Selesai"
+      )
       .map((order) => String(order.table_number));
   }, [orders]);
 
   const availableTableNumbers = useMemo(() => {
     return table_number.filter((t) => !usedTableNumbers.includes(t.name));
   }, [usedTableNumbers]);
+
+  useEffect(() => {
+    if (availableTableNumbers.length === 0) {
+      setTakeaway(true);
+    }
+  }, [availableTableNumbers]);
+
+  const normalizedTable = table === "" ? null : table;
 
   return (
     <div className="flex flex-col gap-6 text-2xl">
@@ -50,7 +61,7 @@ function FormOrder() {
         checked={takeaway}
         onChange={setTakeaway}
       />
-      <PaymentModal name={name} table={table} takeaway={takeaway} />
+      <PaymentModal name={name} table={normalizedTable} takeaway={takeaway} />
     </div>
   );
 }

@@ -22,6 +22,7 @@ import {
   useCreateOrderMutation,
   useGetOrdersQuery,
 } from "@/lib/redux/api/orderApi";
+import { generateReceiptPDF } from "@/utils/generateReceiptPDF";
 
 function PaymentModal({ name, table, takeaway }) {
   const { cart, clearCart, totalPrice } = useCart();
@@ -65,8 +66,15 @@ function PaymentModal({ name, table, takeaway }) {
     );
   };
   const [createOrder] = useCreateOrderMutation();
+  const parseRupiah = (rupiah) => {
+    if (typeof rupiah === "string") {
+      return Number(rupiah.replace(/[^0-9]/g, ""));
+    }
+    return rupiah;
+  };
 
   const handlePlaceOrder = async () => {
+    const cash = parseRupiah(value);
     const payload = {
       customer_name: name,
       table_number: !takeaway ? table : null,
@@ -74,6 +82,8 @@ function PaymentModal({ name, table, takeaway }) {
       has_payed: true,
       total_price: totalPrice,
       takeaway,
+      cash,
+      change,
     };
 
     if (rawValue < totalPrice) {
@@ -83,6 +93,9 @@ function PaymentModal({ name, table, takeaway }) {
     }
 
     await createOrder(payload).unwrap();
+    await generateReceiptPDF(payload);
+    console.log(payload);
+
     toast.success("Sukses", {
       description: "Berhasil membuat pesanan",
     });
