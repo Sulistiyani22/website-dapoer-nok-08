@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function PUT(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const body = await request.json();
 
   try {
@@ -19,12 +19,22 @@ export async function PUT(request, { params }) {
 
     if (
       !customer_name ||
-      typeof table_number !== "number" ||
       typeof has_payed !== "boolean" ||
       typeof takeaway !== "boolean" ||
       typeof total_price !== "number" ||
-      !Array.isArray(order_list)
+      !Array.isArray(order_list) ||
+      order_list.length === 0 ||
+      (!takeaway && typeof table_number !== "number")
     ) {
+      console.log("INVALID BODY", {
+        customer_name,
+        table_number,
+        has_payed,
+        takeaway,
+        total_price,
+        order_list,
+      });
+
       return new Response(JSON.stringify({ message: "Data tidak valid" }), {
         status: 400,
       });
@@ -59,6 +69,7 @@ export async function PUT(request, { params }) {
 
     return Response.json(updatedOrder);
   } catch (error) {
+    console.log(error);
     console.error("Error updating order:", error);
     return new Response(JSON.stringify({ message: "Gagal mengupdate order" }), {
       status: 500,

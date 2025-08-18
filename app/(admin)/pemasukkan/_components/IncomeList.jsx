@@ -15,6 +15,7 @@ import SelectField from "@/components/general/SelectField";
 import { table_number } from "@/lib/constants";
 import { RupiahIRD } from "@/lib/utils";
 import moment from "moment";
+import { handleExportToExcel } from "./GenerateReport";
 
 function IncomeList({ order }) {
   const [search, setSearch] = useState("");
@@ -54,15 +55,16 @@ function IncomeList({ order }) {
               value={search}
             />
           </div>
-          <SelectField
-            id="meja"
-            name="meja"
-            value={table}
-            options={table_number}
-            onChange={setTable}
-            placeholder="Pilih nomor meja"
-          />
         </div>
+      </div>
+
+      <div className="flex justify-end mb-4 gap-4">
+        <button
+          onClick={() => handleExportToExcel(filteredOrder, totalRevenue)}
+          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition cursor-pointer"
+        >
+          Export Excel
+        </button>
       </div>
       {filteredOrder.length > 0 ? (
         <Table>
