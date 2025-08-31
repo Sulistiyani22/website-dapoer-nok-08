@@ -158,7 +158,7 @@ export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
     const blob = new Blob([buffer], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
-    const fileName = `Laporan-Pemasukan-Bakmitepe-${moment().format(
+    const fileName = `Laporan-Pemasukan-DapoerNok08-${moment().format(
       "YYYYMMDD-HHmmss"
     )}.xlsx`;
     FileSaver.saveAs(blob, fileName);

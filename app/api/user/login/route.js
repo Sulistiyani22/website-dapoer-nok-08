@@ -30,7 +30,7 @@ export async function POST(req) {
       user: { id: user.id, username: user.username },
     });
 
-    res.cookies.set("token_bakmitepe", token, {
+    res.cookies.set("token_dapoernok08", token, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 7,
       path: "/",

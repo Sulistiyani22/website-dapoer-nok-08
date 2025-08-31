@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "secret_key";
 
 export async function GET(req) {
   try {
-    const token = req.cookies.get("token_bakmitepe")?.value;
+    const token = req.cookies.get("token_dapoernok08")?.value;
 
     if (!token) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
