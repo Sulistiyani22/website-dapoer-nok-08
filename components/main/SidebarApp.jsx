@@ -42,8 +42,8 @@ function SidebarApp() {
       url: "/tambah-menu",
     },
     {
-      title: "Pemasukkan",
-      url: "/pemasukkan",
+      title: "Transaksi",
+      url: "/transaksi",
     },
   ];
 

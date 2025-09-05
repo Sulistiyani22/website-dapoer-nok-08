@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useGetOrdersQuery } from "@/lib/redux/api/orderApi";
 
-function PemasukkanPage() {
+function TransaksiPage() {
   const router = useRouter();
   useEffect(() => {
     const token = Cookies.get("login");
@@ -27,4 +27,4 @@ function PemasukkanPage() {
   );
 }
 
-export default PemasukkanPage;
+export default TransaksiPage;
