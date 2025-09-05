@@ -42,7 +42,7 @@ function IncomeList({ order }) {
   return (
     <div>
       <div className="bg-base-200 flex flex-col sm:flex-row sm:items-center justify-between p-2 my-6 rounded-lg">
-        <span className="text-2xl">Transaksi</span>
+        <span className="text-2xl">Laporan Transaksi</span>
         <div className="flex gap-2">
           <div className="sm:w-80">
             <InputField
@@ -75,7 +75,7 @@ function IncomeList({ order }) {
               <TableHead>Nomor Meja</TableHead>
               <TableHead className="w-[200px]">Nama</TableHead>
               <TableHead>Tipe</TableHead>
-              <TableHead>Pemasukkan</TableHead>
+              <TableHead>Pendapatan</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

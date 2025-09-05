@@ -4,7 +4,7 @@ import moment from "moment";
 
 export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
   const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet("Laporan Pemasukan");
+  const worksheet = workbook.addWorksheet("Laporan Transaksi");
 
   worksheet.columns = [
     { width: 5 },
@@ -16,7 +16,7 @@ export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
   ];
 
   worksheet.addRow([]);
-  const titleRow = worksheet.addRow(["Laporan Pemasukkan"]);
+  const titleRow = worksheet.addRow(["Laporan Transaksi"]);
 
   titleRow.font = {
     name: "Arial",
@@ -46,7 +46,7 @@ export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
     "Nama",
     "Menu",
     "Tipe",
-    "Pemasukkan",
+    "Pendapatan",
   ]);
   headerRow.eachCell((cell) => {
     cell.fill = {
@@ -120,7 +120,7 @@ export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
     "",
     "",
     "",
-    "Total Pemasukkan",
+    "Total Pendapatan",
     totalRevenue,
   ]);
   worksheet.mergeCells(`A${footerRow.number}`, `D${footerRow.number}`);
@@ -158,7 +158,7 @@ export const handleExportToExcel = async (filteredOrder, totalRevenue) => {
     const blob = new Blob([buffer], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
-    const fileName = `Laporan-Pemasukan-DapoerNok08-${moment().format(
+    const fileName = `Laporan-Transaksi-DapoerNok08-${moment().format(
       "YYYYMMDD-HHmmss"
     )}.xlsx`;
     FileSaver.saveAs(blob, fileName);

@@ -36,7 +36,7 @@ function FormOrder() {
 
   return (
     <div className="flex flex-col gap-6 text-2xl">
-      <span className="font-semibold">Isi Data Pesanan</span>
+      <span className="font-semibold">Isi Data Pemesan</span>
       {!takeaway && (
         <SelectField
           id="meja"
