@@ -68,7 +68,7 @@ function LoginPage() {
         </Link>
       </div>
       <div className="flex-1 flex flex-col justify-start items-center gap-6">
-        <h3 className="text-4xl">Login Admin Menu</h3>
+        <h3 className="text-4xl">LOGIN ADMIN MENU</h3>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="w-[500px] bg-base-200 flex flex-col gap-9 p-6 rounded-md"
