@@ -70,7 +70,7 @@ function OrderList({ order }) {
               type="text"
               id="order"
               name="order"
-              placeholder="Cari Pemesan"
+              placeholder="Cari Nama Pemesan"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
             />

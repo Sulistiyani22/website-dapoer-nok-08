@@ -77,7 +77,7 @@ function TambahMenu() {
         <div>
           <InputField
             type="number"
-            label="Harga"
+            label="Harga Menu"
             id="price"
             placeholder="Masukkan harga"
             {...register("price", {
@@ -118,7 +118,7 @@ function TambahMenu() {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="gambar" className="text-sm font-medium">
-            Gambar
+            Gambar Menu
           </label>
           <input
             id="image"
